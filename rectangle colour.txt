@@ -1,0 +1,78 @@
+MainActivity.java 
+
+package com.example.myapplication;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class MainActivity extends AppCompatActivity {
+
+    private EditText edittext;
+    private Button yellowBtn;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        edittext =(EditText) findViewById(R.id.edittext);
+        yellowBtn=(Button) findViewById(R.id.yellowBtn);
+
+        yellowBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GradientDrawable gradientDrawable=(GradientDrawable) edittext.getBackground().mutate();
+                gradientDrawable.setColor(Color.YELLOW);
+
+            }
+        });
+    }
+}
+
+shape.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<shape android:shape="rectangle" xmlns:android="http://schemas.android.com/apk/res/android">
+    <stroke android:width="4dp" android:color="@android:color/black"/>
+    <solid android:color="#FF0000"/>
+    <corners android:bottomLeftRadius="5dp"
+        android:bottomRightRadius="5dp"
+        android:topLeftRadius="5dp"
+        android:topRightRadius="5dp"/>
+
+</shape>
+
+activity_main.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/activity_main"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="16dp"
+    tools:context="com.example.myapplication.MainActivity">
+
+
+    <EditText
+        android:id="@+id/edittext"
+        android:layout_width="match_parent"
+        android:layout_height="142dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shape"
+        android:padding="10dp" />
+
+    <Button
+        android:id="@+id/yellowBtn"
+        android:layout_width="138dp"
+        android:layout_height="98dp"
+        android:text="yellow" />
+</LinearLayout>
